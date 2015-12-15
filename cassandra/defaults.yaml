@@ -5,6 +5,13 @@ cassandra:
   config: '/etc/cassandra/cassandra_test.yaml'
   service:
     name: cassandra
+  repo:
+    humanname: 'Cassandra ASF Debian repository'
+    name: 'deb http://www.apache.org/dist/cassandra/debian 31x main'
+    file: /etc/apt/sources.list.d/cassandra.list
+    keyid: 749D6EEC0353B12C
+    keyserver: pgp.mit.edu
+
   conf:
     cluster_name: 'Test Cluster'
     num_tokens: 256
