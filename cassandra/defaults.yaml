@@ -2,7 +2,7 @@
 # vim: ft=yaml
 cassandra:
   pkg: cassandra
-  config: '/etc/cassandra/cassandra_test.yaml'
+  config: '/etc/cassandra/cassandra.yaml'
   service:
     name: cassandra
   repo:
