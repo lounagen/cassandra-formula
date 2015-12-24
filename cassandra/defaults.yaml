@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 cassandra:
+  java:
+    pkg: openjdk-8-jre-headless
   pkg: cassandra
   config: '/etc/cassandra/cassandra.yaml'
   service:
