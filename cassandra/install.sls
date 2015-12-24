@@ -14,6 +14,7 @@ java-pkg:
     - name: {{ cassandra.java.pkg }}
     - refresh: true
 
+{% if grains['os'] in ('Ubuntu', 'Debian') %}
 cassandra-repo:
   pkgrepo.managed:
     - humanname: {{ cassandra.repo.humanname }}

@@ -13,7 +13,10 @@ cassandra:
     file: /etc/apt/sources.list.d/cassandra.list
     keyid: 749D6EEC0353B12C
     keyserver: pgp.mit.edu
-
+  deb:
+    name: cassandra_3.1.1_all
+    source: http://www.apache.org/dist/cassandra/debian/pool/main/c/cassandra/cassandra_3.1.1_all.deb
+    source_hash: md5=4bb1d24ffa6ff8500712d6b4ebc54d95
   conf:
     cluster_name: 'Test Cluster'
     num_tokens: 256
