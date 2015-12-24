@@ -3,6 +3,12 @@
 
 {% from "cassandra/map.jinja" import cassandra with context %}
 
+python-software-properties:
+  pkg.installed
+
+python-apt:
+  pkg.installed
+
 java-pkg:
   pkg.installed:
     - name: {{ cassandra.java.pkg }}
