@@ -1,4 +1,4 @@
-{% from "cassandra/map.jinja" import cassandra with context %}
+{%- from "cassandra/map.jinja" import cassandra with context %}
 # Cassandra storage config YAML 
 
 # NOTE:
@@ -160,7 +160,9 @@ partitioner: {{ cassandra.conf.partitioner }}
 # the configured compaction strategy.
 # If not set, the default directory is $CASSANDRA_HOME/data/data.
 data_file_directories:
-    - /var/lib/cassandra/data
+{%- for data_file_directory in cassandra.conf.data_file_directories %}
+    - {{ data_file_directory }}
+{%- endfor %}
 
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.

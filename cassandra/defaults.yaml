@@ -26,6 +26,8 @@ cassandra:
     name: cassandra_{{ version_full }}_all
     source: http://www.apache.org/dist/cassandra/debian/pool/main/c/cassandra/cassandra_{{ version_full }}_all.deb
     source_hash: md5={{ version_deb_md5 }}
+  user: cassandra
+  group: cassandra
   conf:
     cluster_name: 'Test Cluster'
     num_tokens: 256
@@ -42,9 +44,9 @@ cassandra:
     roles_validity_in_ms: 2000
     permissions_validity_in_ms: 2000
     partitioner: org.apache.cassandra.dht.Murmur3Partitioner
-#    data_file_directories:
-#      - /var/lib/cassandra/data
-    commitlog_directory: /var/lib/cassandra/commitlog
+    data_file_directories:
+      - /var/lib/cassandra/{{ cluster_id }}/data
+    commitlog_directory: /var/lib/cassandra/{{ cluster_id }}/commitlog
     disk_failure_policy: stop
     commit_failure_policy: stop
     key_cache_size_in_mb:
@@ -53,7 +55,7 @@ cassandra:
     row_cache_save_period: 0
     counter_cache_size_in_mb:
     counter_cache_save_period: 7200
-    saved_caches_directory: /var/lib/cassandra/saved_caches
+    saved_caches_directory: /var/lib/cassandra/{{ cluster_id }}/saved_caches
     commitlog_sync: periodic
     commitlog_sync_period_in_ms: 10000
     commitlog_segment_size_in_mb: 32

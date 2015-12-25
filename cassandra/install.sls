@@ -42,6 +42,44 @@ cassandra-dpkg-install:
         - file: /tmp/{{ cassandra.deb.name }}.deb
 {% endif %}
 
+{%- for data_file_directory in cassandra.conf.data_file_directories %}
+{{ data_file_directory }}:
+  file.directory:
+    - user: {{ cassandra.user }}
+    - group: {{ cassandra.group }}
+    - file_mode: 644
+    - dir_mode: 755
+    - makedirs: True
+    - recurse:
+      - user
+      - group
+      - mode
+{%- endfor %}
+
+{{ cassandra.conf.commitlog_directory }}:
+  file.directory:
+    - user: {{ cassandra.user }}
+    - group: {{ cassandra.group }}
+    - file_mode: 644
+    - dir_mode: 755
+    - makedirs: True
+    - recurse:
+      - user
+      - group
+      - mode
+
+{{ cassandra.conf.saved_caches_directory }}:
+  file.directory:
+    - user: {{ cassandra.user }}
+    - group: {{ cassandra.group }}
+    - file_mode: 644
+    - dir_mode: 755
+    - makedirs: True
+    - recurse:
+      - user
+      - group
+      - mode
+
 cassandra-pkg:
   pkg.installed:
     - name: {{ cassandra.pkg }}
