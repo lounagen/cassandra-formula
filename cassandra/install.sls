@@ -9,7 +9,7 @@ python-software-properties:
 python-apt:
   pkg.installed
 
-java-pkg:
+cassandra-java-pkg:
   pkg.installed:
     - name: {{ cassandra.java.pkg }}
     - refresh: true
@@ -85,5 +85,5 @@ cassandra-pkg:
     - name: {{ cassandra.pkg }}
     - refresh: true
     - require:
-      - pkg: java-pkg
+      - pkg: cassandra-java-pkg
 
