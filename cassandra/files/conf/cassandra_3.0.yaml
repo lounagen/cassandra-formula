@@ -465,8 +465,9 @@ ssl_storage_port: {{ cassandra.conf.ssl_storage_port }}
 # you can specify which should be chosen using listen_interface_prefer_ipv6. If false the first ipv4
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
-listen_address: {{ cassandra.conf.listen_address }}
+# listen_address: localhost
 # listen_interface: eth0
+{{ cassandra.conf.listen_address_or_interface }}
 # listen_interface_prefer_ipv6: false
 
 # Address to broadcast to other Cassandra nodes

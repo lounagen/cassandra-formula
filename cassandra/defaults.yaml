@@ -11,7 +11,9 @@ cassandra:
   java:
     pkg: openjdk-8-jre-headless
   pkg: cassandra
-  config: '/etc/cassandra/cassandra.yaml'
+  config:
+    cassandra_yaml: '/etc/cassandra/cassandra.yaml'
+    rackdc: '/etc/cassandra/cassandra-rackdc.properties'
   service:
     name: cassandra
   repo:
@@ -29,6 +31,11 @@ cassandra:
   user: cassandra
   group: cassandra
   conf:
+    rackdc:
+      dc: dc1
+      rack: rack1
+      dc_suffix: ''
+      prefer_local: 'true'
     cluster_name: 'Test Cluster'
     num_tokens: 256
     hinted_handoff_enabled: 'true'
@@ -77,7 +84,8 @@ cassandra:
     trickle_fsync_interval_in_kb: 10240
     storage_port: 7000
     ssl_storage_port: 7001
-    listen_address: localhost
+    listen_address_or_interface: 'listen_address: localhost'
+    #listen_address_or_interface: 'listen_interface: eth0'
     start_native_transport: 'true'
     native_transport_port: 9042
     start_rpc: 'false'

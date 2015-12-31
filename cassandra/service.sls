@@ -12,3 +12,4 @@ cassandra-name:
     - enable: True
     - watch:
       - file: cassandra-config
+      - file: cassandra-config-rackdc
