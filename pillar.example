@@ -1,3 +1,14 @@
 cassandra:
   lookup:
-    master: cassandra-master
+    foo: cassandra-bar
+  conf:
+    rackdc:
+      dc: DC0
+      rack: RAC0
+    cluster_name: '"MyCluster"'
+    seed_provider:
+      parameters:
+        seeds: '"10.2.3.4,10.5.6.7"'
+    rpc_address: {{ grains['ip4_interfaces']['eth0'][0] }}
+    endpoint_snitch: GossipingPropertyFileSnitch
+    listen_address_or_interface: 'listen_interface: eth0'
